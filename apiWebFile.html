@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        onload = () => {
+            arquivos.onchange = () => {
+
+                //converter imagens
+                let fr = new FileReader();
+                fr.readAsDataURL(arquivos.files[0]);
+                fr.onload = (e) => {
+                    output.innerHTML = `<img src="${e.target.result}" />`
+                };
+
+                //converter para texto arquivo txt
+                /*
+                let fr = new FileReader();
+                fr.readAsText(arquivos.files[0], 'UTF-8');
+                fr.onload = (e) => {
+                    output.innerHTML = e.target.result
+                };
+                */
+
+                //lê os arquivos
+                /*
+                arqs.innerHTML = Array.from(arquivos.files)
+                .map(f => f.name).join('<br/>')
+                */
+                /*
+                for(let i=0; i<arquivos.files.length; i++){
+                    arqs.innerHTML += arquivos.files[i].name + "<br/>";
+                }
+                */
+            }
+            btnArquivos.onclick = () => {
+                arquivos.click();
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>JavaScript</h1>
+    <p> <input 
+        id="arquivos" 
+        multiple type="file" 
+        style="display: none"
+        accept="image/png" 
+        />
+        <!-- accept="image/png extensões aceitas". --> 
+    <button id="btnArquivos">Escolher arquivo</button></p>
+    <p id="arqs"></p>
+    <p id="output"></p>
+</body>
+</html>
